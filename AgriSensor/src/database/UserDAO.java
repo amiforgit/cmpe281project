@@ -17,7 +17,7 @@ public class UserDAO{
 				Connection con = DriverManager.getConnection("jdbc:mysql://iaasdb.chzfjyaimyou.us-west-2.rds.amazonaws.com:3306/iaasdb?useSSL=false", "admin","adminadmin");
 				//iaasdb.chzfjyaimyou.us-west-2.rds.amazonaws.com:3306
 				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery("SELECT s.sensor_id,t.temp,sensor_tag_value,s.sensor_status,max(t.time_stamp) creation_time FROM iaasdb.temp_data t join sensordb.sensor_master s on (s.sensor_id=t.sensor_id) where t.user_id="+i+" group by t.sensor_id");
+				ResultSet rs = st.executeQuery("SELECT s.sensor_id,t.temp,sensor_tag_value,s.sensor_status,max(t.time_stamp) creation_time FROM iaasdb.temp_data t join iaasdb.sensor_master s on (s.sensor_id=t.sensor_id) where t.user_id="+i+" group by t.sensor_id");
 				while(rs.next()){
 					UDVO udvo = new UDVO();
 					udvo.setSensor_id(rs.getString("sensor_id"));

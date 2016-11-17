@@ -48,8 +48,12 @@ public class SignUp extends HttpServlet {
 		String state=request.getParameter("State");
 		String address=request.getParameter("Address");
 		Date d = new Date();
+		java.text.SimpleDateFormat sdf = 
+			    new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+			String currentTime = sdf.format(d);
 		String query = "INSERT INTO user_master (user_email,user_password,user_fname,user_lname,phone,address,zipcode,city,state,user_status,user_type,creation_date,last_login_date)"
-									 + " VALUES ('"+userName+"','"+password+"','"+firstName+"','"+lastName+"','"+phone+"','"+address+"','"+zipcode+"','"+city+"','"+state+"','active','client','"+d.toString()+"','')";
+									 + " VALUES ('"+userName+"','"+password+"','"+firstName+"','"+lastName+"','"+phone+"','"+address+"','"+zipcode+"','"+city+"','"+state+"','active','client','"+currentTime+"','"+currentTime+"')";
 		DatabaseAccess db = new DatabaseAccess();
 		db.insert(query);
 		response.sendRedirect("login_new.jsp");
