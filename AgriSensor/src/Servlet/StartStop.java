@@ -38,8 +38,8 @@ public class StartStop extends HttpServlet {
 		final String sensor_string = request.getParameter("sensor_id");
 		 String sensor_id = request.getParameter("sensor_id");
 		String action = request.getParameter("action");
-		final String user_string=(String)ses.getAttribute("user");
-		int user_id = (int) ses.getAttribute("user");
+		final String user_string=""+ses.getAttribute("user");
+		int user_id = Integer.parseInt(user_string);
 		System.out.println("......"+user_id);
 		
 		if(action.equals("start"))

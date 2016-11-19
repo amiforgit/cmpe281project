@@ -42,7 +42,7 @@ public class CreateSensor extends HttpServlet {
 	   String sensor_name = request.getParameter("sensorname");
 	   String lat = request.getParameter("lat");
 	   String lon = request.getParameter("lon");
-	   System.out.println("tag value"+sensor_name);
+	   System.out.println("tag value,lat,lon"+sensor_name+","+lat+","+lon);
 	   
 //	   String filePath = getServletContext().getRealPath("\\WebContent\\KEYSENSOR.pem");
 	   InvokeInstance invok = new InvokeInstance();

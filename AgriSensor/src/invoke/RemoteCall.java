@@ -25,7 +25,7 @@ public class RemoteCall {
 
 		
 		
-		
+		System.out.println("remotecall");
 		
 		
 
@@ -37,15 +37,15 @@ public class RemoteCall {
 		
 		*/
 		File file = new File(".");
-		currentDirectory = file.getAbsolutePath()+"\\WebContent\\KEYSENSOR.pem";
+		currentDirectory = file.getAbsolutePath()+"\\WebContent\\AWSKey_Sam.pem";
 		
 		//jsch.addIdentity(currentDirectory);
 		//jsch.addIdentity("C:\\Users\\divya\\JAVAProject\\SensorCloud\\KEYSENSOR.pem");
-		jsch.addIdentity("/usr/share/tomcat8/webapps/ROOT/KEYSENSOR.pem");
+		jsch.addIdentity("/Users/sam/Downloads/AWSKey_Sam.pem");
 		jsch.setConfig("StrictHostKeyChecking", "no");
 
 		//enter your own EC2 instance IP here
-		Session session=jsch.getSession("ubuntu",ipaddress, 22);
+		Session session=jsch.getSession("windows",ipaddress, 22);
 		
 		int a=0;
 		
@@ -55,6 +55,7 @@ public class RemoteCall {
 			Thread.sleep(6000);
 			session.connect();
 			ChannelExec channel = (ChannelExec) session.openChannel("exec");
+			System.out.println("remote call: "+user_id+","+sensor_id+","+lat+","+lon);
 	//		BufferedReader in11=new BufferedReader(new InputStreamReader(channel.getInputStream()));
 			channel.setCommand("./sensor.sh "+user_id+" "+sensor_id+" "+lat+" "+lon+" &");
 			channel.setErrStream(System.err);

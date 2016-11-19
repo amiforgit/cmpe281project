@@ -44,9 +44,11 @@ public class Userdata extends HttpServlet {
 		UserDAO u = new UserDAO();
 		HttpSession ses = request.getSession();
 		int user_id = (int) ses.getAttribute("user");
+		System.out.println("user_id"+user_id);
 		ls = u.display(user_id);
 		System.out.println("servelet \n servlet");
-		for(UDVO v : ls){
+		for(UDVO v : ls)
+		{
 			System.out.println(v.getSensor_id());
 			System.out.println(v.getSensor_tag_value());
 			System.out.println(v.getSensor_status());

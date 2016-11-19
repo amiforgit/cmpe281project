@@ -17,7 +17,7 @@ public class CloudWatch {
     	
     	final String awsAccessKey = "AKIAJKE734M3ECBVELTQ";
         final String awsSecretKey = "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";
-        final String instanceId = "i-0351a77671a0f4d61";
+        final String instanceId = "i-0cad398ddc5c78e03"; //i-0351a77671a0f4d61
 
         final AmazonCloudWatchClient client = client(awsAccessKey, awsSecretKey);
         final GetMetricStatisticsRequest request = request(instanceId); 

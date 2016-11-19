@@ -20,7 +20,7 @@ public class UsersTable {
 				
 				//iaasdb.chzfjyaimyou.us-west-2.rds.amazonaws.com:3306
 				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery("SELECT u.user_id,count(s.sensor_id) as NUMBER_SENSORS,u.user_email,u.user_fname,u.user_lname,u.user_status FROM iaasdb.user_master u join sensordb.sensor_master s on (s.user_id=u.user_id) group by user_id;");
+				ResultSet rs = st.executeQuery("SELECT u.user_id,count(s.sensor_id) as NUMBER_SENSORS,u.user_email,u.user_fname,u.user_lname,u.user_status FROM iaasdb.user_master u join iaasdb.sensor_master s on (s.user_id=u.user_id) group by user_id;");
 				while(rs.next()){
 					UsersTableVO vo = new UsersTableVO();
 					
@@ -38,7 +38,7 @@ public class UsersTable {
 					vo.setStatus(rs.getString("user_status"));
 					System.out.println(rs.getString("user_status"));
 					
-					vo.setNUMBER_SENSOR(rs.getInt("NUMBER_SENSORS"));
+					vo.setNUMBER_SENSOR(rs.getInt("NUMBER_SENSORS")); //
 					System.out.println(rs.getString("NUMBER_SENSORS"));
 					ls.add(vo);
 				}
